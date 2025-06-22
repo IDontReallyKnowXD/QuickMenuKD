@@ -1,0 +1,4 @@
+repository "QuickMenuKD/QuickMenuKD@18968048145409@cloud"
+  path "/"
+    br "/main"
+    co "/main"
