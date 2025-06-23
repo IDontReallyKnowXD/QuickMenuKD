@@ -2,34 +2,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
-    public List<int> items = new List<int>();
-    public List<int> uses = new List<int>();
+    public class item
+    {
+        public int id;
+        public int uses;
+        public Sprite sprite;
+
+        public item(int id, int uses)
+        {
+            this.id = id;
+            this.uses = uses;
+            this.sprite = Resources.Load<Sprite>("IMG/" + id);
+        }
+
+        public void UpdateSprite()
+        {
+            sprite = Resources.Load<Sprite>("IMG/" + id + uses);
+        }
+    }
 
     public Image ImageP; // previous item
     public Image ImageC; // current item
     public Image ImageN; // next item
 
-    private List<Sprite> sprites = new List<Sprite>();
+    private List<item> items = new List<item>();
 
     void Start()
     {
-        items.Add(0);
-        uses.Add(3);
-        items.Add(1);
-        uses.Add(1);
-        items.Add(2);
-        uses.Add(1);
-        items.Add(3);
-        uses.Add(-1);
-        //will be updated in another place where items can be added to the quick menu
-
-        for (int i = 0; i < items.Count; i++)
-        {
-            Sprite s = Resources.Load<Sprite>("IMG/" + i);
-            sprites.Add(s);
-        }
+        items.Add(new item(0, 3));
+        items.Add(new item(1, 1));
+        items.Add(new item(2, 1));
+        items.Add(new item(3, -1)); // infinite uses
 
         UpdateImages();
     }
@@ -49,6 +54,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             items.RemoveAt(items.Count - 1);
             UpdateImages();
         }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Use();
@@ -59,49 +65,43 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         if (items.Count > 2)
         {
-            ImageP.sprite = sprites[items[0]];
-            ImageC.sprite = sprites[items[1]];
-            ImageN.sprite = sprites[items[2]];
+            ImageP.sprite = items[0].sprite;
+            ImageC.sprite = items[1].sprite;
+            ImageN.sprite = items[2].sprite;
         }
         else if (items.Count == 2)
         {
-            ImageP.sprite = sprites[items[0]];
-            ImageC.sprite = sprites[items[1]];
-            ImageN.sprite = sprites[items[0]];
+            ImageP.sprite = items[0].sprite;
+            ImageC.sprite = items[1].sprite;
+            ImageN.sprite = items[0].sprite;
         }
         else
         {
-            ImageP.sprite = sprites[items[0]];
-            ImageC.sprite = sprites[items[0]];
-            ImageN.sprite = sprites[items[0]];
+            ImageP.sprite = items[0].sprite;
+            ImageC.sprite = items[0].sprite;
+            ImageN.sprite = items[0].sprite;
         }
-
     }
+
     void Use()
     {
-        if (items[1] != 0 || uses[items[1]] < 0)
-        {
-            uses[items[1]] = uses[items[1]] - 1;
-        }
+        if (items.Count < 2) return;
 
-        else if (uses[items[1]] > 0)
+        item currentItem = items[1];
+
+        if (currentItem.uses != 0)
         {
-            if (uses[items[1]] != 1)
+            if (currentItem.uses > 0)
+                currentItem.uses--;
+
+            if (currentItem.uses == 0)
             {
-                uses[items[1]] = uses[items[1]] - 1;
+                items.RemoveAt(1);
             }
-        }
-
-        if (uses[items[1]] == 0)
-        {
-            items.RemoveAt(1);
-        }
-
-        else if (uses[items[1]] > 0)
-        {
-            Sprite s = Resources.Load<Sprite>("IMG/" + items[1] + uses[items[1]]);
-            sprites.RemoveAt(items[1]);
-            sprites.Insert(items[1], s);
+            else if (currentItem.uses > 0)
+            {
+                currentItem.UpdateSprite();
+            }
         }
 
         UpdateImages();
