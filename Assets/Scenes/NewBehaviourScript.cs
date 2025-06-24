@@ -1,45 +1,25 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class InventoryManager : MonoBehaviour
 {
-    public class item
-    {
-        public int id;
-        public int uses;
-        public Sprite sprite;
-
-        public item(int id, int uses)
-        {
-            this.id = id;
-            this.uses = uses;
-            this.sprite = Resources.Load<Sprite>("IMG/" + id);
-        }
-
-        public void UpdateSprite()
-        {
-            sprite = Resources.Load<Sprite>("IMG/" + id + uses);
-        }
-    }
 
     public Image ImageP; // previous item
     public Image ImageC; // current item
     public Image ImageN; // next item
 
-    private List<item> items = new List<item>();
+    public List<item> items = new List<item>();
 
     void Start()
     {
-        items.Add(new item(0, 3));
-        items.Add(new item(1, 1));
-        items.Add(new item(2, 1));
-        items.Add(new item(3, -1)); // infinite uses
-
         UpdateImages();
     }
 
-    void Update()
+    void Update()//checks for important inputs each frame
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -61,9 +41,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void UpdateImages()
+    void UpdateImages()//updating the images, checks the sprites available
     {
-        if (items.Count > 2)
+        if (items.Count > 2) //always happens-problem
         {
             ImageP.sprite = items[0].sprite;
             ImageC.sprite = items[1].sprite;
@@ -83,27 +63,36 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void Use()
+    void Use() //using the items, exceptions are: id 1 will not disappear after using all of its uses, id 3 is infinite
     {
-        if (items.Count < 2) return;
-
         item currentItem = items[1];
-
-        if (currentItem.uses != 0)
+        if (currentItem.id != 3)
         {
-            if (currentItem.uses > 0)
+            if (currentItem.id != 0 || (currentItem.id == 0 && currentItem.uses > 1))
+            {
                 currentItem.uses--;
-
+            }
             if (currentItem.uses == 0)
             {
                 items.RemoveAt(1);
             }
-            else if (currentItem.uses > 0)
+            else if (currentItem.uses > 0 || ((currentItem.id == 0 && currentItem.uses > 1) || currentItem.id != 0))
             {
-                currentItem.UpdateSprite();
+                currentItem.sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
             }
+            UpdateImages();
         }
-
-        UpdateImages();
     }
+}
+
+
+[Serializable] //Can be configured outside of code
+public class item
+{
+    public int id;
+    public int uses;
+    public Sprite sprite;
+    [TextArea]
+    public string comment;
+
 }

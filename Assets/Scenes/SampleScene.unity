@@ -639,11 +639,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36880cfe9fae0bc4588c65717f078ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: 
-  uses: 
   ImageP: {fileID: 1763578808}
   ImageC: {fileID: 832913797}
   ImageN: {fileID: 578101897}
+  items:
+  - id: 0
+    uses: 3
+    sprite: {fileID: 21300000, guid: 1118983364b63254da87c13438b9eb1a, type: 3}
+    comment: Syringe, Wo't dissapear after all of the uses
+  - id: 1
+    uses: 1
+    sprite: {fileID: 21300000, guid: edb814c845b038f47b8cc761768185f1, type: 3}
+    comment: Apple
+  - id: 2
+    uses: 1
+    sprite: {fileID: 21300000, guid: 61f6780d594cd06468e547cd76cb696c, type: 3}
+    comment: bomb
+  - id: 3
+    uses: -1
+    sprite: {fileID: 21300000, guid: 27a4884a85764f7438b590ec7b9dac1e, type: 3}
+    comment: infinite uses
 --- !u!1 &1763578806
 GameObject:
   m_ObjectHideFlags: 0
