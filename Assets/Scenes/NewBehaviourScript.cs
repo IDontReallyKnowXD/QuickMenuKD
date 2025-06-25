@@ -8,9 +8,9 @@ using static UnityEngine.UIElements.UxmlAttributeDescription;
 public class InventoryManager : MonoBehaviour
 {
 
-    public Image ImageP; // previous item
-    public Image ImageC; // current item
-    public Image ImageN; // next item
+    public Image ImagePrevious; // previous item
+    public Image ImageCurrent; // current item
+    public Image ImageNext; // next item
 
     public List<item> items = new List<item>();
 
@@ -37,51 +37,54 @@ public class InventoryManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Use();
+            Use(items[1]);
         }
     }
 
     void UpdateImages()//updating the images, checks the sprites available
     {
-        if (items.Count > 2) //always happens-problem
+        Debug.Log("update");
+        if (items.Count > 2)
         {
-            ImageP.sprite = items[0].sprite;
-            ImageC.sprite = items[1].sprite;
-            ImageN.sprite = items[2].sprite;
+            ImagePrevious.sprite = items[0].sprite;
+            ImageCurrent.sprite = items[1].sprite;
+            ImageNext.sprite = items[2].sprite;
         }
         else if (items.Count == 2)
         {
-            ImageP.sprite = items[0].sprite;
-            ImageC.sprite = items[1].sprite;
-            ImageN.sprite = items[0].sprite;
+            ImagePrevious.sprite = items[0].sprite;
+            ImageCurrent.sprite = items[1].sprite;
+            ImageNext.sprite = items[0].sprite;
         }
-        else
+        else if(items.Count == 1)
         {
-            ImageP.sprite = items[0].sprite;
-            ImageC.sprite = items[0].sprite;
-            ImageN.sprite = items[0].sprite;
+            ImagePrevious.sprite = items[0].sprite;
+            ImageCurrent.sprite = items[0].sprite;
+            ImageNext.sprite = items[0].sprite;
         }
     }
 
-    void Use() //using the items, exceptions are: id 1 will not disappear after using all of its uses, id 3 is infinite
+    void Use(item currentItem) //using the items, exceptions are: id 1 will not disappear after using all of its uses, id 3 is infinite
     {
-        item currentItem = items[1];
-        if (currentItem.id != 3)
-        {
-            if (currentItem.id != 0 || (currentItem.id == 0 && currentItem.uses > 1))
-            {
-                currentItem.uses--;
-            }
-            if (currentItem.uses == 0)
-            {
-                items.RemoveAt(1);
-            }
-            else if (currentItem.uses > 0 || ((currentItem.id == 0 && currentItem.uses > 1) || currentItem.id != 0))
-            {
-                currentItem.sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
-            }
-            UpdateImages();
+        if (currentItem.id == 3 || (currentItem.id == 0 && currentItem.uses == 1))//if unlimited uses or syringe with no uses
+        { 
+            return; 
         }
+        currentItem.uses--;
+        if (currentItem.uses == 0)
+        {
+            items.RemoveAt(1);
+        }
+        UpdateSprite(currentItem);
+        UpdateImages();
+        
+    }
+    void UpdateSprite(item Item)//Updates the sprite of an item
+    {
+        if (Resources.Load<Sprite>("IMG/" + Item.id + Item.uses )!= null)
+            {
+            Item.sprite = Resources.Load<Sprite>("IMG/" + Item.id + Item.uses);
+            }
     }
 }
 
