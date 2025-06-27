@@ -1,25 +1,33 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
+using UnityEngine.Events;
 
-public class InventoryManager : MonoBehaviour
+
+public class QuickMenu : MonoBehaviour
 {
 
-    public Image ImagePrevious; // previous item
-    public Image ImageCurrent; // current item
-    public Image ImageNext; // next item
+    public Image ImagePrevious; 
+    public Image ImageCurrent;
+    public Image ImageNext; 
 
     public List<item> items = new List<item>();
+
+    public UnityEvent SwipeRight;
+    public UnityEvent SwipeLeft;
+    public UnityEvent Use;
+
 
     void Start()
     {
         UpdateImages();
     }
 
-    void Update()//checks for important inputs each frame
+    void Update() //checks for important inputs each frame
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -37,13 +45,12 @@ public class InventoryManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Use(items[1]);
+            Use(items[0]);
         }
     }
 
-    void UpdateImages()//updating the images, checks the sprites available
+    void UpdateImages() //updating the images, checks the sprites available
     {
-        Debug.Log("update");
         if (items.Count > 2)
         {
             ImagePrevious.sprite = items[0].sprite;
@@ -64,22 +71,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void Use(item currentItem) //using the items, exceptions are: id 1 will not disappear after using all of its uses, id 3 is infinite
-    {
-        if (currentItem.id == 3 || (currentItem.id == 0 && currentItem.uses == 1))//if unlimited uses or syringe with no uses
-        { 
-            return; 
-        }
-        currentItem.uses--;
-        if (currentItem.uses == 0)
-        {
-            items.RemoveAt(1);
-        }
-        UpdateSprite(currentItem);
-        UpdateImages();
-        
-    }
-    void UpdateSprite(item Item)//Updates the sprite of an item
+    void UpdateSprite(item Item) //Updates the sprite of an item
     {
         if (Resources.Load<Sprite>("IMG/" + Item.id + Item.uses )!= null)
             {
@@ -95,6 +87,10 @@ public class item
     public int id;
     public int uses;
     public Sprite sprite;
+    public int BonusID;
+    public int BonusAmount;
+    public int Amount;
+    public int MaxUses;
     [TextArea]
     public string comment;
 
