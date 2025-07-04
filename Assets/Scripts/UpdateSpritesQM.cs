@@ -11,20 +11,23 @@ using UnityEngine.Events;
 public class UpdateSpritesQM : MonoBehaviour
 {
 
-    public List<Item> items = new List<Item>();
+    public ItemsList items;
 
-    void Update() 
+    public UnityEvent updateImages;
+
+    public void UpdateSprites() 
     {
-        if (items.Count == 0) return;
-        Item currentItem = items[1];
-        if (items.Count == 1)
+        if (items.items.Count == 0) return;
+        Item currentItem = items.items[1];
+        if (items.items.Count == 1)
         {
-            currentItem = items[0];
+            currentItem = items.items[0];
         }
         if (Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses) != null)
         {
-            items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
+            items.items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
         }
-        
+        updateImages.Invoke();
+
     }
 }

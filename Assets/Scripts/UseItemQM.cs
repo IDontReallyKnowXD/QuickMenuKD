@@ -1,21 +1,25 @@
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 
 public class UseItemQM : MonoBehaviour
 {
-    public List<Item> items;
+
+    public ItemsList items;
+
+    public UnityEvent updateSprites;
+
     public void Use()
     {
-        if (items.Count == 0) return;
-        Item currentItem = items[1];
-        if (items.Count == 1)
+        if (items.items.Count == 0) return;
+        Item currentItem = items.items[1];
+        if (items.items.Count == 1)
         {
-            currentItem = items[0];
+            currentItem = items.items[0];
         }
-        currentItem = items[0];
         if (currentItem.id == 3 || (currentItem.id == 0 && currentItem.uses == 1))//if unlimited uses or syringe with no uses
         {
             return;
@@ -23,8 +27,23 @@ public class UseItemQM : MonoBehaviour
         currentItem.uses--;
         if (currentItem.uses == 0)
         {
-            items.RemoveAt(1);
+            if(currentItem.Amount > 1) 
+            {
+                currentItem.Amount--;
+                currentItem.uses = currentItem.MaxUses;
+                updateSprites.Invoke();
+                return;
+            }
+            if (items.items.Count > 1)
+            {
+                items.items.RemoveAt(1);
+            }
+            else
+            { 
+                items.items.RemoveAt(0);
+            }
         }
+        updateSprites.Invoke();
 
     }
 }

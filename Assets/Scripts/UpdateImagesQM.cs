@@ -15,35 +15,31 @@ public class UpdateImagesQM : MonoBehaviour
     public Image ImageCurrent;
     public Image ImageNext; 
 
-    public List<Item> items;
+    public ItemsList items;
 
-    public UnityEvent SwipeRight;
-    public UnityEvent SwipeLeft;
-    public UnityEvent Use;
-
-    void Update() //checks for important inputs each frame
+    public void UpdateImages() //checks for important inputs each frame
     {
-        if (items.Count == 0) return;
+        if (items.items.Count == 0) return;
 
-        if (items.Count > 2)
+        if (items.items.Count > 2)
         {
-            ImagePrevious.sprite = items[0].sprite;
-            ImageCurrent.sprite = items[1].sprite;
-            ImageNext.sprite = items[2].sprite;
+            ImagePrevious.sprite = items.items[0].sprite;
+            ImageCurrent.sprite = items.items[1].sprite;
+            ImageNext.sprite = items.items[2].sprite;
         }
 
-        else if (items.Count == 2)
+        else if (items.items.Count == 2)
         {
-            ImagePrevious.sprite = items[0].sprite;
-            ImageCurrent.sprite = items[1].sprite;
-            ImageNext.sprite = items[0].sprite;
+            ImagePrevious.sprite = items.items[0].sprite;
+            ImageCurrent.sprite = items.items[1].sprite;
+            ImageNext.sprite = items.items[0].sprite;
         }
 
-        else if (items.Count == 1)
+        else if (items.items.Count == 1)
         {
-            ImagePrevious.sprite = items[0].sprite;
-            ImageCurrent.sprite = items[0].sprite;
-            ImageNext.sprite = items[0].sprite;
+            ImagePrevious.sprite = items.items[0].sprite;
+            ImageCurrent.sprite = items.items[0].sprite;
+            ImageNext.sprite = items.items[0].sprite;
         }
     }
 }
