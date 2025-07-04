@@ -122,6 +122,155 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &113026778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 113026779}
+  - component: {fileID: 113026780}
+  m_Layer: 0
+  m_Name: Inputs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &113026779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113026778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 863.8291, y: 649.5677, z: 0.19200891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &113026780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113026778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729e0cb2f7c2c8548850d5876de9239f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeRight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213044828}
+        m_TargetAssemblyTypeName: SwipeRightQM, Assembly-CSharp
+        m_MethodName: SwipeRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  swipeLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213044829}
+        m_TargetAssemblyTypeName: SwipeLeftQM, Assembly-CSharp
+        m_MethodName: SwipeLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Use:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1213044830}
+        m_TargetAssemblyTypeName: UseItemQM, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &391815782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391815784}
+  - component: {fileID: 391815785}
+  m_Layer: 0
+  m_Name: Sprites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391815784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391815782}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 863.8291, y: 649.5677, z: 0.19200891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391815785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391815782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36880cfe9fae0bc4588c65717f078ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 11400000, guid: a80f044120ee50445ba5e43af6d1915d, type: 2}
+  updateImages:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 698334081}
+        m_TargetAssemblyTypeName: UpdateImagesQM, Assembly-CSharp
+        m_MethodName: UpdateImages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +565,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &698334078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 698334080}
+  - component: {fileID: 698334081}
+  m_Layer: 0
+  m_Name: Images
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &698334080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698334078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 863.8291, y: 649.5677, z: 0.19200891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &698334081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698334078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4376def47ce6034da4ba5937aebe941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrevious: {fileID: 1763578808}
+  ImageCurrent: {fileID: 832913797}
+  ImageNext: {fileID: 578101897}
+  items: {fileID: 11400000, guid: a80f044120ee50445ba5e43af6d1915d, type: 2}
 --- !u!1 &773122357
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +792,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832913795}
   m_CullTransparentMesh: 1
---- !u!1 &1744021005
+--- !u!1 &1213044822
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -603,62 +800,116 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1744021006}
-  - component: {fileID: 1744021007}
+  - component: {fileID: 1213044823}
+  - component: {fileID: 1213044829}
+  - component: {fileID: 1213044828}
+  - component: {fileID: 1213044830}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Actions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1744021006
+--- !u!4 &1213044823
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1744021005}
+  m_GameObject: {fileID: 1213044822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.718139, y: 0.5316817, z: 0.021410538}
+  m_LocalPosition: {x: 863.8291, y: 649.5677, z: 0.19200891}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1744021007
+--- !u!114 &1213044828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1744021005}
+  m_GameObject: {fileID: 1213044822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36880cfe9fae0bc4588c65717f078ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: fa7ee3788c0d5f140a1607cb0ff73a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImageP: {fileID: 1763578808}
-  ImageC: {fileID: 832913797}
-  ImageN: {fileID: 578101897}
-  items:
-  - id: 0
-    uses: 3
-    sprite: {fileID: 21300000, guid: 1118983364b63254da87c13438b9eb1a, type: 3}
-    comment: Syringe, Wo't dissapear after all of the uses
-  - id: 1
-    uses: 1
-    sprite: {fileID: 21300000, guid: edb814c845b038f47b8cc761768185f1, type: 3}
-    comment: Apple
-  - id: 2
-    uses: 1
-    sprite: {fileID: 21300000, guid: 61f6780d594cd06468e547cd76cb696c, type: 3}
-    comment: bomb
-  - id: 3
-    uses: -1
-    sprite: {fileID: 21300000, guid: 27a4884a85764f7438b590ec7b9dac1e, type: 3}
-    comment: infinite uses
+  items: {fileID: 11400000, guid: a80f044120ee50445ba5e43af6d1915d, type: 2}
+  updateImages:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 698334081}
+        m_TargetAssemblyTypeName: UpdateImagesQM, Assembly-CSharp
+        m_MethodName: UpdateImages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1213044829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213044822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d9ae777b54f1746bbe90d3645387d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 11400000, guid: a80f044120ee50445ba5e43af6d1915d, type: 2}
+  updateImages:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 698334081}
+        m_TargetAssemblyTypeName: UpdateImagesQM, Assembly-CSharp
+        m_MethodName: UpdateImages
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1213044830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213044822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb19723eb75737418e395cfd932ffe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 11400000, guid: a80f044120ee50445ba5e43af6d1915d, type: 2}
+  updateSprites:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 391815785}
+        m_TargetAssemblyTypeName: UpdateSpritesQM, Assembly-CSharp
+        m_MethodName: UpdateSprites
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1763578806
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,4 +1061,7 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 773122361}
   - {fileID: 1769839287}
-  - {fileID: 1744021006}
+  - {fileID: 113026779}
+  - {fileID: 391815784}
+  - {fileID: 698334080}
+  - {fileID: 1213044823}

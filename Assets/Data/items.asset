@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - id: 0
-    uses: 1
+    uses: 3
     sprite: {fileID: 21300000, guid: 1118983364b63254da87c13438b9eb1a, type: 3}
     BonusID: 1
     BonusAmount: 100
