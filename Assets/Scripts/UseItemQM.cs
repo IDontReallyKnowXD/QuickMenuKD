@@ -15,7 +15,7 @@ public class UseItemQM : MonoBehaviour
     public void Use()
     {
         if (items.items.Count == 0) return;
-        Item currentItem = items.items[1];
+        ItemQM currentItem = items.items[1];
         if (items.items.Count == 1)
         {
             currentItem = items.items[0];
