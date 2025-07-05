@@ -14,6 +14,9 @@ public class UpdateImagesQM : MonoBehaviour
     public Image ImagePrevious; 
     public Image ImageCurrent;
     public Image ImageNext; 
+    public Text TextPrevious;
+    public Text TextCurrent;
+    public Text TextNext;
 
     public ItemsList items;
 
@@ -24,22 +27,31 @@ public class UpdateImagesQM : MonoBehaviour
         if (items.items.Count > 2)
         {
             ImagePrevious.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
             ImageCurrent.sprite = items.items[1].sprite;
+            TextCurrent.text = items.items[1].Amount.ToString();
             ImageNext.sprite = items.items[2].sprite;
+            TextNext.text = items.items[2].Amount.ToString();
         }
 
         else if (items.items.Count == 2)
         {
             ImagePrevious.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
             ImageCurrent.sprite = items.items[1].sprite;
+            TextCurrent.text = items.items[1].Amount.ToString();
             ImageNext.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
         }
 
         else if (items.items.Count == 1)
         {
             ImagePrevious.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
             ImageCurrent.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
             ImageNext.sprite = items.items[0].sprite;
+            TextPrevious.text = items.items[0].Amount.ToString();
         }
     }
 }

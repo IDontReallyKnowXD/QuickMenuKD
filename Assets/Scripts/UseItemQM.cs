@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 
-public class UseItemQM : MonoBehaviour
+public class UseItemQM : MonoBehaviour //may need to get just the current ItemQM
 {
 
     public ItemsList items;
