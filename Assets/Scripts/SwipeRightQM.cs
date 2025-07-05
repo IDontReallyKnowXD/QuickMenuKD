@@ -13,6 +13,7 @@ public class SwipeRightQM : MonoBehaviour
 
     public void SwipeRight() //1,2,3 -> 3,1,2
     {
+        if (items.items.Count < 1) return;
         items.items.Insert(0, items.items[items.items.Count - 1]);
         items.items.RemoveAt(items.items.Count - 1);
         updateImages.Invoke();
