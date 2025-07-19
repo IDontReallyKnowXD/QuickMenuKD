@@ -13,7 +13,7 @@ public class QuickMenu : MonoBehaviour
     public Text TextCurrent;
     public Text TextNext;
 
-    public void UpdateImages(ItemQuickMenu itemPrevious, ItemQuickMenu itemCurrent, ItemQuickMenu itemNext) //checks for important inputs each frame
+    public void UpdateImages(ItemQuickMenu itemPrevious, ItemQuickMenu itemCurrent, ItemQuickMenu itemNext)
     {
 
 
