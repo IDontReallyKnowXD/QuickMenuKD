@@ -9,6 +9,7 @@ public class QuickMenu : MonoBehaviour
     public Image ImagePrevious; 
     public Image ImageCurrent;
     public Image ImageNext; 
+
     public Text TextPrevious;
     public Text TextCurrent;
     public Text TextNext;
