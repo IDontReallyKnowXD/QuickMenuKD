@@ -20,7 +20,7 @@ public class QuickMenuManager : MonoBehaviour
         if(IsEmpty())return;
         items.Add(items[0]);
         items.RemoveAt(0);
-        updateImages.Invoke(items);
+        EventLogicUpdateImages();
     }
 
     public void SwipeRight() //1,2,3 -> 3,1,2
@@ -28,7 +28,7 @@ public class QuickMenuManager : MonoBehaviour
         if (IsEmpty()) return;
         items.Insert(0, items[items.Count - 1]);
         items.RemoveAt(items.Count - 1);
-        updateImages.Invoke(items);
+        EventLogicUpdateImages();
     }
 
     public void Use()
@@ -46,49 +46,60 @@ public class QuickMenuManager : MonoBehaviour
         currentItem.uses--;
         if (currentItem.uses < 1)
         {
-            if (currentItem.Amount > 1)
+            currentItem.Amount--;
+            if (currentItem.Amount > 0)
             {
-                currentItem.Amount--;
                 currentItem.uses = currentItem.MaxUses;
-                UpdateSprites(currentItem);
+                EventLogicUpdateImages();
                 return;
             }
             else if (items.Count > 1)
             {
                 items.RemoveAt(1);
-                updateImages.Invoke(items);
+                EventLogicUpdateImages();
                 return;
             }
             else
             {
                 items.RemoveAt(0);
-                updateImages.Invoke(items);
+                EventLogicUpdateImages();
                 return;
             }
         }
         UpdateSprites(currentItem);
 
     }
-
     public void UpdateSprites(ItemQuickMenu currentItem)
     {
-        if (Resources.Load<Sprite>("IMG/" + currentItem.id +  currentItem.id + currentItem.uses) != null)
+        if (Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses) != null)
         {
             if (items.Count > 1)
             {
-                items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.id + currentItem.uses);
-                updateImages.Invoke(items);
-                return;
-            }
-            else
-            {
-                items[0].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.id + currentItem.uses);
-                updateImages.Invoke(items);
+                items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
+                EventLogicUpdateImages();
                 return;
             }
         }
-
     }
+
+    public void EventLogicUpdateImages()
+    {
+        if (items.Count > 2)
+        {
+            updateImages.Invoke(items[0], items[1], items[2]);
+        }
+
+        else if (items.Count == 2)
+        {
+            updateImages.Invoke(items[0], items[1], items[0]);
+        }
+
+        else if (items.Count == 1)
+        {
+            updateImages.Invoke(items[0], items[0], items[0]);
+        }
+    }
+
 }
 [Serializable]
-public class TransferQuickMenuList : UnityEvent<List<ItemQuickMenu>> { }
+public class TransferQuickMenuList : UnityEvent<ItemQuickMenu,ItemQuickMenu,ItemQuickMenu> { }

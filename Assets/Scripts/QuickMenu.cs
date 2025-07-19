@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 
 public class QuickMenu : MonoBehaviour
@@ -14,38 +13,17 @@ public class QuickMenu : MonoBehaviour
     public Text TextCurrent;
     public Text TextNext;
 
-    public void UpdateImages(List<ItemQuickMenu> items) //checks for important inputs each frame
+    public void UpdateImages(ItemQuickMenu itemPrevious, ItemQuickMenu itemCurrent, ItemQuickMenu itemNext) //checks for important inputs each frame
     {
 
-        if (items.Count > 2)
-        {
-            ImagePrevious.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-            ImageCurrent.sprite = items[1].sprite;
-            TextCurrent.text = items[1].Amount.ToString();
-            ImageNext.sprite = items[2].sprite;
-            TextNext.text = items[2].Amount.ToString();
-        }
 
-        else if (items.Count == 2)
-        {
-            ImagePrevious.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-            ImageCurrent.sprite = items[1].sprite;
-            TextCurrent.text = items[1].Amount.ToString();
-            ImageNext.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-        }
+        ImagePrevious.sprite = itemPrevious.sprite;
+        TextPrevious.text = itemPrevious.Amount.ToString();
+        ImageCurrent.sprite = itemCurrent.sprite;
+        TextCurrent.text = itemCurrent.Amount.ToString();
+        ImageNext.sprite = itemNext.sprite;
+        TextNext.text = itemNext.Amount.ToString();
 
-        else if (items.Count == 1)
-        {
-            ImagePrevious.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-            ImageCurrent.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-            ImageNext.sprite = items[0].sprite;
-            TextPrevious.text = items[0].Amount.ToString();
-        }
     }
 }
 
