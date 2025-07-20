@@ -7,12 +7,11 @@ public class InputCheck : MonoBehaviour
     public UnityEvent swipeLeft;
     public UnityEvent Use;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            swipeRight.Invoke(); // Calls all methods assigned in the Inspector
+            swipeRight.Invoke(); 
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {

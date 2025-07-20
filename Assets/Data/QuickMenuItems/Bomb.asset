@@ -17,6 +17,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 61f6780d594cd06468e547cd76cb696c, type: 3}
   BonusID: 1
   BonusAmount: 250
-  Amount: 1
+  Amount: 3
   MaxUses: 1
   comment: throw to deal 250 damage
