@@ -20,8 +20,10 @@ public class QuickMenu : MonoBehaviour
 
         ImagePrevious.sprite = itemPrevious.sprite;
         TextPrevious.text = itemPrevious.Amount.ToString();
+        
         ImageCurrent.sprite = itemCurrent.sprite;
         TextCurrent.text = itemCurrent.Amount.ToString();
+
         ImageNext.sprite = itemNext.sprite;
         TextNext.text = itemNext.Amount.ToString();
 

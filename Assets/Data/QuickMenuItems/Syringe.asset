@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0049e90c023f844d8f783ca4b598c60, type: 3}
   m_Name: Syringe
   m_EditorClassIdentifier: 
-  id: 0
-  uses: 3
+  Id: 10
+  Uses: 50
   sprite: {fileID: 21300000, guid: 1118983364b63254da87c13438b9eb1a, type: 3}
   BonusID: 0
-  BonusAmount: 100
-  Amount: 1
+  BonusAmount: 20
+  Amount: 50
   MaxUses: 3
-  comment: heals 100 hp, raises DI
+  comment: heals 100 hp, raises DI, uses and amount are the same

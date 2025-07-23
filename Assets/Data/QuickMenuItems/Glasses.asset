@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0049e90c023f844d8f783ca4b598c60, type: 3}
   m_Name: Glasses
   m_EditorClassIdentifier: 
-  id: 3
-  uses: -1
+  Id: 13
+  Uses: -1
   sprite: {fileID: 21300000, guid: 27a4884a85764f7438b590ec7b9dac1e, type: 3}
   BonusID: 2
   BonusAmount: 0

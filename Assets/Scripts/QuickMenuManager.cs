@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class QuickMenuManager : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class QuickMenuManager : MonoBehaviour
 
     public TransferQuickMenuList updateImages;
 
-    public Boolean IsEmpty() 
+    private bool UsingSyringe = false;
+
+    private int itemIndex;
+
+    public int syringeIndex;
+
+    public Boolean IsEmpty()
     {
         if (items.Count == 0) return true;
         else return false;
@@ -17,7 +24,7 @@ public class QuickMenuManager : MonoBehaviour
 
     public void SwipeLeft() //1,2,3 -> 2,3,1
     {
-        if(IsEmpty())return;
+        if (IsEmpty()) return;
         items.Add(items[0]);
         items.RemoveAt(0);
         EventLogicUpdateImages();
@@ -35,21 +42,32 @@ public class QuickMenuManager : MonoBehaviour
     {
         if (IsEmpty()) return;
         ItemQuickMenu currentItem = items[1];
+        itemIndex = 1;
         if (items.Count == 1)
         {
             currentItem = items[0];
+            itemIndex = 0;
         }
-        if (currentItem.id == 3 || (currentItem.id == 0 && currentItem.uses == 1))//if unlimited uses or syringe with no uses
+        if (currentItem.Uses == -1)//if unlimited uses
         {
             return;
         }
-        currentItem.uses--;
-        if (currentItem.uses < 1)
+        if (currentItem.Id == 10 && currentItem.Uses != 0)//if a syringe is used
+        {
+            UseSyringeAsync(currentItem, itemIndex);
+            return;
+        }
+        else if (currentItem.Id == 10 && currentItem.Uses == 0)
+        {
+            return;
+        }
+        currentItem.Uses--;
+        if (currentItem.Uses < 1)
         {
             currentItem.Amount--;
             if (currentItem.Amount > 0)
             {
-                currentItem.uses = currentItem.MaxUses;
+                currentItem.Uses = currentItem.MaxUses;
                 EventLogicUpdateImages();
                 return;
             }
@@ -69,17 +87,38 @@ public class QuickMenuManager : MonoBehaviour
         UpdateSprites(currentItem);
 
     }
+
+    public async Task UseSyringeAsync(ItemQuickMenu currentItem, int ItemIndex)
+    {
+        if (UsingSyringe == true) return;
+        UsingSyringe = true;
+        while (Input.GetKey(KeyCode.E) && items[ItemIndex].Id == 10)
+        {
+            currentItem.Uses--;
+            currentItem.Amount--;
+            if (currentItem.Uses == 0)
+            {
+                UpdateSprites(currentItem);
+                return;
+            }
+            UpdateSprites(currentItem);
+            await Task.Delay(100);
+        }
+        UsingSyringe = false;
+    }
+
     public void UpdateSprites(ItemQuickMenu currentItem)
     {
-        if (Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses) != null)
+        if (Resources.Load<Sprite>("IMG/" + currentItem.Id + currentItem.Uses) != null)
         {
             if (items.Count > 1)
             {
-                items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.id + currentItem.uses);
+                items[1].sprite = Resources.Load<Sprite>("IMG/" + currentItem.Id + currentItem.Uses);
                 EventLogicUpdateImages();
                 return;
             }
         }
+        EventLogicUpdateImages();
     }
 
     public void EventLogicUpdateImages()
@@ -101,5 +140,6 @@ public class QuickMenuManager : MonoBehaviour
     }
 
 }
+
 [Serializable]
-public class TransferQuickMenuList : UnityEvent<ItemQuickMenu,ItemQuickMenu,ItemQuickMenu> { }
+public class TransferQuickMenuList : UnityEvent<ItemQuickMenu, ItemQuickMenu, ItemQuickMenu> { }
