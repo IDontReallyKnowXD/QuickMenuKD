@@ -88,6 +88,7 @@ public class QuickMenuManager : MonoBehaviour
     {
         if (UsingSyringe == true) return;
         UsingSyringe = true;
+        await Task.Delay(500);
         while (Input.GetKey(KeyCode.E) && items[ItemIndex].Id == 10)
         {
             currentItem.Uses--;
