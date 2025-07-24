@@ -67,9 +67,9 @@ public class QuickMenuManager : MonoBehaviour
         }
         if (currentItem.Uses == 0 && currentItem.CanBeErased==true)
         {
+            currentItem.Amount--;
             if (currentItem.Amount > 1)
-            {
-                currentItem.Amount--;
+            { 
                 currentItem.Uses = currentItem.MaxUses;
                 UpdateSprites(currentItem);
                 return;
