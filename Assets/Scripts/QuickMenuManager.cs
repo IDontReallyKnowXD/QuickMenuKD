@@ -61,31 +61,27 @@ public class QuickMenuManager : MonoBehaviour
         {
             return;
         }
-        currentItem.Uses--;
-        if (currentItem.Uses < 1)
+        if (currentItem.Uses > 0)
         {
-            currentItem.Amount--;
-            if (currentItem.Amount > 0)
+            currentItem.Uses--;
+        }
+        if (currentItem.Uses == 0 && currentItem.CanBeErased==true)
+        {
+            if (currentItem.Amount > 1)
             {
+                currentItem.Amount--;
                 currentItem.Uses = currentItem.MaxUses;
-                EventLogicUpdateImages();
+                UpdateSprites(currentItem);
                 return;
-            }
-            else if (items.Count > 1)
-            {
-                items.RemoveAt(1);
-                EventLogicUpdateImages();
-                return;
-            }
+            }     
             else
             {
-                items.RemoveAt(0);
+                items.RemoveAt(itemIndex);
                 EventLogicUpdateImages();
                 return;
             }
         }
         UpdateSprites(currentItem);
-
     }
 
     public async Task UseSyringeAsync(ItemQuickMenu currentItem, int ItemIndex)
@@ -102,7 +98,7 @@ public class QuickMenuManager : MonoBehaviour
                 return;
             }
             UpdateSprites(currentItem);
-            await Task.Delay(100);
+            await Task.Delay(150);
         }
         UsingSyringe = false;
     }

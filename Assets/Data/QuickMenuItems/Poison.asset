@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0049e90c023f844d8f783ca4b598c60, type: 3}
-  m_Name: Bomb
+  m_Name: Poison
   m_EditorClassIdentifier: 
-  Id: 12
-  Uses: 1
-  sprite: {fileID: 21300000, guid: 3aad3827a5c44134a9b3515d1978f17e, type: 3}
-  BonusID: 1
-  BonusAmount: 250
-  Amount: 3
-  MaxUses: 1
-  CanBeErased: 1
-  comment: throw to deal 250 damage
+  Id: 14
+  Uses: 4
+  sprite: {fileID: 21300000, guid: dbc82fc858eae5e49926ab8434476fcd, type: 3}
+  BonusID: 5
+  BonusAmount: 10
+  Amount: 1
+  MaxUses: 4
+  CanBeErased: 0
+  comment: adds poison to attacks

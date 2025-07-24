@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   Id: 11
-  Uses: 1
-  sprite: {fileID: 21300000, guid: edb814c845b038f47b8cc761768185f1, type: 3}
+  Uses: 2
+  sprite: {fileID: 21300000, guid: a636e49085f793e4e92213531b5edff0, type: 3}
   BonusID: 1
   BonusAmount: 100
   Amount: 3
-  MaxUses: 1
+  MaxUses: 2
+  CanBeErased: 1
   comment: heals 100 hp

@@ -13,6 +13,7 @@ public class ItemQuickMenu : ScriptableObject
     public int BonusAmount;
     public int Amount;
     public int MaxUses;
+    public bool CanBeErased;
     [TextArea]
     public string comment;
 }
