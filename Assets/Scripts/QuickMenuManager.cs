@@ -89,22 +89,17 @@ public class QuickMenuManager : MonoBehaviour
         if (UsingSyringe == true) return;
         UsingSyringe = true;
         await Task.Delay(500);
-        while (Input.GetKey(KeyCode.E) && items[ItemIndex].Id == 10)
+        while (Input.GetKey(KeyCode.E) && items[ItemIndex].Id == 10 && currentItem.Uses == 0)
         {
             currentItem.Uses--;
             currentItem.Amount--;
-            if (currentItem.Uses == 0)
-            {
-                UpdateSprites(currentItem);
-                return;
-            }
             UpdateSprites(currentItem);
             await Task.Delay(150);
         }
         UsingSyringe = false;
     }
 
-    public void UpdateSprites(ItemQuickMenu currentItem)
+    public void UpdateSprites(ItemQuickMenu currentItem) //Do I need to change this system?
     {
         if (Resources.Load<Sprite>("IMG/" + currentItem.Id + currentItem.Uses) != null)
         {
