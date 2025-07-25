@@ -99,7 +99,7 @@ public class QuickMenuManager : MonoBehaviour
         UsingSyringe = false;
     }
 
-    public void UpdateSprites(ItemQuickMenu currentItem) //Do I need to change this system?
+    public void UpdateSprites(ItemQuickMenu currentItem)//Do I need to change this system?
     {
         if (Resources.Load<Sprite>("IMG/" + currentItem.Id + currentItem.Uses) != null)
         {
